@@ -6,17 +6,23 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:42:14 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/14 18:39:48 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/03/14 20:02:43 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "pipex.h"
 
+void first_child()
+{
+    
+}
+
 int main(int argc, char *argv[], char **envp)
 {
-    char *args[] = {"ls", "-la", NULL};
-    // char *argss[] = {"grep", "fa", NULL};
-    char *argss[] = {"ls", "-l", NULL};
+    // char *args[] = {"ls", "-la", NULL};
+    char **args = ft_split(argv[2], ' ');
+    char **argss = ft_split(argv[3], ' ');
+    // char *argss[] = {"ls", "-l", NULL};
     if (argc != 5)
     {
         write(1, "executed as follows: ./pipex file1 cmd1 cmd2 file2\n", 51);
@@ -58,7 +64,7 @@ int main(int argc, char *argv[], char **envp)
         dup2(fd[1], 1);
         close(fd[1]);
         dup2(infile, 0);
-        close(infile);
+        // close(infile);
         execve("/bin/ls", args, envp);
     }
     pid2 = fork();
