@@ -6,18 +6,18 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:44:05 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/14 17:48:46 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/03/14 18:39:24 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-// open() func
+// open()
 # include <fcntl.h>
-// perror() func
+// perror()
 # include <stdio.h>
-// write() func
+// write(), fork(), pipe(), close(), dup2(), execve()
 # include <unistd.h>
 
 #endif

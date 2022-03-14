@@ -1,0 +1,8 @@
+total 56
+-rw-r--r--  1 rarahhal  2019     0 Mar 12 20:45 Makefile
+-rwxr-xr-x  1 rarahhal  2019  8860 Mar 14 18:34 a.out
+-rw-r--r--  1 rarahhal  2019    35 Mar 14 18:21 infile.txt
+-rw-r--r--  1 rarahhal  2019     0 Mar 14 18:34 outfile.txt
+-rw-r--r--  1 rarahhal  2019  2270 Mar 14 18:34 pipex.c
+-rw-r--r--  1 rarahhal  2019  1042 Mar 14 17:48 pipex.h
+-rw-r--r--  1 rarahhal  2019  3659 Mar 14 16:35 preparation.c
