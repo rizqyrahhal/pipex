@@ -5,11 +5,24 @@
 
 int main(int argc, char *argv[], char **envp)
 {
-    int file = open("stdin.txt", O_WRONLY | O_CREAT, 0777);
+    /* #### execve() ####*/
 
-    dup2(file, 1);
+    // char cmd[] = "/bin/ls";
+    // char *argVec[] = {"ls", "-l", "-a", NULL};
+    // char *envVec[] = {NULL};
 
-    printf("test");
+    // printf("Start of execve call %s:\n", cmd);
+    // printf("===================================================================\n");
+    // if (execve(cmd, argVec, envVec) == -1)
+    //     perror("Could not execute execve");
+    // printf("Oops, something went wrong!\n");
+
+    /* #### dup2() ####*/
+
+    // int file = open("stdin.txt", O_WRONLY | O_CREAT, 0777);
+
+    // dup2(file, 1);
+    // printf("test");
 
     /* #### pipe() ####*/
     
