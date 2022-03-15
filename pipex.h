@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:44:05 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/15 14:08:55 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:06:09 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ typedef struct s_stock {
     int     pid1;
     int     pid2;
     char    **cmd_argemment;
+    char    *paths;
+    char    *cmd;
+    char    **cmd_paths;
     // char    **argss;
     // pid_t   pid1;
     // pid_t   pid2;
@@ -31,7 +34,7 @@ typedef struct s_stock {
 # include <fcntl.h>
 // perror()
 # include <stdio.h>
-// write(), fork(), pipe(), close(), dup2(), execve()
+// write(), fork(), pipe(), close(), dup2(), execve(), access()
 # include <unistd.h>
 // free(), malloc()
 #include <stdlib.h>
@@ -43,6 +46,8 @@ void    child_tow(t_stock pipex, char *argv[], char **envp);
 size_t	ft_strlen(const char *s);
 void    return_error(char *world);
 void    error_msg(char *msg);
+int     ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 
 #endif

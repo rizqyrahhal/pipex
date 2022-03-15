@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:42:14 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/15 14:12:49 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:17:29 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ void    close_pipes(t_stock *pipex)
 {
     close(pipex->pipefd[0]);
     close(pipex->pipefd[1]);
+}
+
+char    *find_path(char **envp)
+{
+    while (ft_strncmp("PATH", *envp, 4) != 0)
+        envp++;
+    return (*envp + 5);
 }
 
 int main(int argc, char *argv[], char **envp)
@@ -32,24 +39,15 @@ int main(int argc, char *argv[], char **envp)
     pipex.outfile = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0000644);
     if (pipex.outfile < 0)
         return_error("infile error");
+    // open pipes
     if (pipe(pipex.pipefd) == -1)
         return_error("error in opining pipe");
-    // t_pid
-    pipex.pid1 = fork();
-    if (pipex.pid1 < 0)
-        return_error("error");
+    // paths
+    pipex.paths = find_path(envp);
     // first child
-    if (pipex.pid1 == 0)
-        child_own(pipex, argv, envp);
-    pipex.pid2 = fork();
-    if (pipex.pid2 < 0)
-    {
-        return_error("error");
-        return (6);
-    }
+    child_own(pipex, argv, envp);
     // secend child
-    if (pipex.pid2 == 0)
-        child_tow(pipex, argv, envp);
+    child_tow(pipex, argv, envp);
     close_pipes(&pipex);
     waitpid(pipex.pid1, NULL, 0);
     waitpid(pipex.pid2, NULL, 0);
