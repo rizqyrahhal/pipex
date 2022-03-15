@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:42:14 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/15 12:15:59 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/03/15 14:12:49 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,44 +23,28 @@ int main(int argc, char *argv[], char **envp)
     t_stock pipex;
     
     if (argc != 5)
-    {
-        write(1, "executed as follows: ./pipex file1 cmd1 cmd2 file2\n", 51);
-        return (1);
-    }
+        error_msg("executed as follows: ./pipex file1 cmd1 cmd2 file2\n");
     // infile 
     pipex.infile = open(argv[1], O_RDONLY);
     if (pipex.infile < 0)
-    {
-        perror("infile error");
-        return (2);
-    }
+        return_error("infile error");
     // outfile
     pipex.outfile = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0000644);
     if (pipex.outfile < 0)
-    {
-        perror("infile error");
-        return (3);
-    }
-    
+        return_error("infile error");
     if (pipe(pipex.pipefd) == -1)
-    {
-        perror("error in opining pipe");
-        return (4);
-    }
+        return_error("error in opining pipe");
     // t_pid
     pipex.pid1 = fork();
     if (pipex.pid1 < 0)
-    {
-        perror("error");
-        return (5);
-    }
+        return_error("error");
     // first child
     if (pipex.pid1 == 0)
         child_own(pipex, argv, envp);
     pipex.pid2 = fork();
     if (pipex.pid2 < 0)
     {
-        perror("error");
+        return_error("error");
         return (6);
     }
     // secend child

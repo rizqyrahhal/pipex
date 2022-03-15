@@ -6,7 +6,7 @@
 #    By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 11:26:00 by rarahhal          #+#    #+#              #
-#    Updated: 2022/03/15 12:33:45 by rarahhal         ###   ########.fr        #
+#    Updated: 2022/03/15 13:53:04 by rarahhal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ CC = cc
 SRCS = pipex.c \
 		childs.c \
 		utils.c \
+		error.c \
 
 OBJS = $(SRCS:.c=.o)
 
