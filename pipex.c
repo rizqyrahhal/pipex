@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:42:14 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/15 11:21:16 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/03/15 12:15:59 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ void    close_pipes(t_stock *pipex)
 int main(int argc, char *argv[], char **envp)
 {
     t_stock pipex;
-    // char *args[] = {"ls", "-la", NULL};
-    //char **args = ft_split(argv[2], ' '); /// ajoute ou child_own
-    char **argss = ft_split(argv[3], ' ');
-    // char *argss[] = {"ls", "-l", NULL};
+    
     if (argc != 5)
     {
         write(1, "executed as follows: ./pipex file1 cmd1 cmd2 file2\n", 51);
@@ -50,7 +47,7 @@ int main(int argc, char *argv[], char **envp)
         perror("error in opining pipe");
         return (4);
     }
-    // pid_t pid1;
+    // t_pid
     pipex.pid1 = fork();
     if (pipex.pid1 < 0)
     {
@@ -72,8 +69,6 @@ int main(int argc, char *argv[], char **envp)
     close_pipes(&pipex);
     waitpid(pipex.pid1, NULL, 0);
     waitpid(pipex.pid2, NULL, 0);
-    // child_free(pipex, pipex.cmd_argemment);
-    // child_free(&pipex);
     
     return (0);
 }
