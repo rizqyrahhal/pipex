@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 11:19:47 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/15 16:29:59 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/03/15 19:07:49 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	child_free(t_stock *pipex)
 
 char *get_cmd(t_stock pipex)
 {
-		char *command = ft_strjoin("/", pipex.cmd_argemment[0]);
+		char *command = ft_strjoin("/", pipex.cmd_argemment[0]); //join '/' to command
 		char *tmp;
 		int	i;
 		
@@ -37,7 +37,8 @@ char *get_cmd(t_stock pipex)
 				return (tmp);
 			i++;
 		}
-		return ("command not found!");
+		// write(1, "command not found!\n", 19);
+		return (NULL);
 }
 
 void	child_own(t_stock pipex, char *argv[], char **envp)
@@ -49,6 +50,11 @@ void	child_own(t_stock pipex, char *argv[], char **envp)
 	{
 		pipex.cmd_argemment = ft_split(argv[2], ' ');
 		pipex.cmd = get_cmd(pipex);
+		if (!pipex.cmd)
+		{
+			error_msg("command not found!\n");
+			exit (1);
+		}
 		close(pipex.pipefd[0]);
 		dup2(pipex.pipefd[1], 1);
 		close(pipex.pipefd[1]);
@@ -71,6 +77,8 @@ void	child_tow(t_stock pipex, char *argv[], char **envp)
 	{
 		pipex.cmd_argemment = ft_split(argv[3], ' ');
 		pipex.cmd = get_cmd(pipex);
+		if (!pipex.cmd)
+			perror("command not found!\n");
 		close(pipex.pipefd[1]);
 		dup2(pipex.pipefd[0], 0);
 		close(pipex.pipefd[0]);

@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:47:31 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/15 13:59:49 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/03/15 19:02:26 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void    return_error(char *world)
 {
     perror(world);
-    exit (0);
+    exit (1);
 }
 
-void    error_msg(char *msg)
+int error_msg(char *msg)
 {
     write(1, msg, ft_strlen(msg));
-    exit (0);
+    return (1);
 }
