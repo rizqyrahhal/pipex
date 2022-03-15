@@ -6,7 +6,7 @@
 #    By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/15 11:26:00 by rarahhal          #+#    #+#              #
-#    Updated: 2022/03/15 12:21:23 by rarahhal         ###   ########.fr        #
+#    Updated: 2022/03/15 12:33:45 by rarahhal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,4 +35,5 @@ fclean:	clean
 re: fclean
 	make all
 
-# delet: rm outfile.txt
+delet: 
+		rm outfile.txt
