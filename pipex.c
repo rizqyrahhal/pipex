@@ -6,11 +6,17 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:42:14 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/15 19:03:07 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/03/16 12:11:01 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "pipex.h"
+
+void checkLeaks(void)
+{
+	// system("leaks a.out");
+	system("leaks pipex");
+}
 
 void    close_pipes(t_stock *pipex)
 {
@@ -30,7 +36,7 @@ int main(int argc, char *argv[], char **envp)
     t_stock pipex;
     
     if (argc != 5)
-        error_msg("executed as follows: ./pipex file1 cmd1 cmd2 file2\n");
+        use_this("executed as follows: ./pipex file1 cmd1 cmd2 file2\n");
     // infile 
     pipex.infile = open(argv[1], O_RDONLY);
     if (pipex.infile < 0)
@@ -49,8 +55,11 @@ int main(int argc, char *argv[], char **envp)
     // secend child
     child_tow(pipex, argv, envp);
     close_pipes(&pipex);
+    // waiting childs process
+    // child_free(&pipex);
     waitpid(pipex.pid1, NULL, 0);
     waitpid(pipex.pid2, NULL, 0);
     
+    atexit(checkLeaks);
     return (0);
 }

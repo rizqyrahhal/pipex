@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 19:45:21 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/15 16:05:59 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/03/16 11:22:28 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,4 +150,26 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}	
 	newstring[k] = 0;
 	return (newstring);
+}
+
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	if (*needle == '\0')
+		return ((char *) haystack);
+	while (haystack[i] != '\0' && i < len)
+	{
+		j = 0;
+		while (haystack[i + j] == needle[j] && i + j < len)
+		{
+			j++;
+			if (needle[j] == '\0')
+				return ((char *)&haystack[i]);
+		}
+		i++;
+	}
+	return (0);
 }
