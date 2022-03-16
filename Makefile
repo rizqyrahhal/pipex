@@ -2,14 +2,18 @@ NAME = pipex
 FLAGS = -Wall -Werror -Wextra
 CC = cc
 
-SRCS = 	pipex.c \
-		childs.c \
-		utils.c \
-		error.c \
+SRCS = 	Mandatory/pipex.c \
+		Mandatory/childs.c \
+		Mandatory/error.c \
+		libft/ft_split.c \
+		libft/ft_strjoin.c \
+		libft/ft_strlen.c \
+		libft/ft_strncmp.c \
+		libft/ft_strnstr.c \
 
 
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS:/.c=/.o)
 
 
 $(NAME): $(OBJS)
@@ -19,13 +23,13 @@ $(NAME): $(OBJS)
 all:	$(NAME)
 
 clean:
-	rm -f *.o
+	@rm -f *.o
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean
-	make all
+	@make all
 
 
 .PHONY: all clean fclean re
