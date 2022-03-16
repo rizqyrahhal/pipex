@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:42:14 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/16 12:45:14 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:12:10 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int main(int argc, char *argv[], char **envp)
     // waiting childs process
     waitpid(pipex.pid1, NULL, 0);
     waitpid(pipex.pid2, NULL, 0);
-    // child_free(&pipex);
+    free(pipex.cmd);
     
-    atexit(checkLeaks);
+    // atexit(checkLeaks);
     return (0);
 }

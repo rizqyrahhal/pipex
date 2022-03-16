@@ -6,20 +6,20 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 11:19:47 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/16 12:14:57 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/03/16 15:18:54 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	child_free(t_stock *pipex)
+void	child_free(char **str)
 {
 	int	i;
 
 	i = 0;
-	while (pipex->cmd_argemment[i])
-		free(pipex->cmd_argemment[i++]);
-	free(pipex->cmd_argemment);
+	while (str[i])
+		free(str[i++]);
+	free(str);
 }
 
 char *get_cmd(t_stock pipex)
@@ -54,7 +54,11 @@ void	child_own(t_stock pipex, char *argv[], char **envp)
 		pipex.cmd_argemment = ft_split(argv[2], ' ');
 		pipex.cmd = get_cmd(pipex);
 		if (!pipex.cmd)
+		{
 			cmd_not_nound(pipex.cmd_argemment[0]);
+			child_free(pipex.cmd_argemment);
+			exit (EXIT_FAILURE);
+		}
 		close(pipex.pipefd[0]);
 		dup2(pipex.pipefd[1], 1);
 		close(pipex.pipefd[1]);
@@ -75,7 +79,11 @@ void	child_tow(t_stock pipex, char *argv[], char **envp)
 		pipex.cmd_argemment = ft_split(argv[3], ' ');
 		pipex.cmd = get_cmd(pipex);
 		if (!pipex.cmd)
+		{
 			cmd_not_nound(pipex.cmd_argemment[0]);
+			child_free(pipex.cmd_argemment);
+			exit (EXIT_FAILURE);
+		}
 		close(pipex.pipefd[1]);
 		dup2(pipex.pipefd[0], 0);
 		close(pipex.pipefd[0]);
