@@ -6,11 +6,11 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:42:14 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/16 18:32:49 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/03/17 11:33:26 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../includs/pipex.h"
 
 void	close_pipes(t_stock *pipex)
 {

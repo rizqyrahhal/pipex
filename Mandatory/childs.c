@@ -6,11 +6,11 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 11:19:47 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/16 18:18:21 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/03/17 11:33:11 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "../includs/pipex.h"
 
 void	child_free(char **str)
 {

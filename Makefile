@@ -18,7 +18,7 @@ SRCS = 	Mandatory/pipex.c \
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
-all:	$(NAME)
+all: $(NAME)
 
 clean:
 	@rm -f *.o
