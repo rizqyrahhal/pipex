@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 13:47:31 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/17 15:00:43 by rarahhal         ###   ########.fr       */
+/*   Created: 2022/03/17 17:18:27 by rarahhal          #+#    #+#             */
+/*   Updated: 2022/03/17 17:21:22 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includs/pipex.h"
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
-void	return_error(char *world)
-{
-	perror(world);
-	exit (EXIT_FAILURE);
-}
 
-void	use_this(char *msg)
-{
-	write(2, msg, ft_strlen(msg));
-	exit (EXIT_FAILURE);
-}
 
-void	cmd_not_nound(char *cmd)
-{
-	write(2, cmd, ft_strlen(cmd));
-	write(2, ": command not found\n", 20);
-}
+
+#endif

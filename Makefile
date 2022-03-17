@@ -12,11 +12,8 @@ SRCS = 	Mandatory/pipex.c \
 		libft/ft_strnstr.c \
 
 
-
-
-
-$(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
+$(NAME):
+	@$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 all: $(NAME)
 
@@ -25,6 +22,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -f outfile
 
 re: fclean
 	@make all
