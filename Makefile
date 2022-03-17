@@ -13,12 +13,10 @@ SRCS = 	Mandatory/pipex.c \
 
 
 
-OBJS = $(SRCS:/.c=/.o)
 
 
 $(NAME): $(OBJS)
-		$(CC) $(FLAGS) -c $(SRCS)
-		ar rc $(NAME) $(OBJS)
+	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 all:	$(NAME)
 
