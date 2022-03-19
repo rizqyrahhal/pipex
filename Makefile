@@ -12,6 +12,7 @@ SRCS = 	Mandatory/pipex.c \
 		libft/ft_strnstr.c \
 
 
+
 $(NAME):
 	@$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
