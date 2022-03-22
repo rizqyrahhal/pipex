@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 11:19:47 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/17 14:56:18 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/03/22 18:03:23 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*get_cmd(t_stock pipex)
 		tmp = ft_strjoin("/", pipex.cmd_argemment[0]);
 		command = ft_strjoin(pipex.cmd_paths[i], tmp);
 		free(tmp);
-		if (!access(command, F_OK))
+		if (access(command, F_OK) == 0)
 			return (command);
 		free(command);
 	}
