@@ -7,7 +7,7 @@ SRCS = 	Mandatory/pipex.c \
 		Mandatory/childs.c \
 		Mandatory/error.c \
 
-BONUS_SRCS =	bonus/pipex_bonus.c \
+BONUS_SRCS =	bonus/bonus.c \
 				bonus/child.c \
 				bonus/error.c \
 

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_bonus.h                                      :+:      :+:    :+:   */
+/*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/17 17:18:27 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/29 11:28:22 by rarahhal         ###   ########.fr       */
+/*   Created: 2022/03/29 11:30:03 by rarahhal          #+#    #+#             */
+/*   Updated: 2022/03/29 12:45:53 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_BONUS_H
-# define PIPEX_BONUS_H
+#ifndef BONUS_H
+# define BONUS_H
 
 // pid_t
 # include <sys/types.h>
@@ -33,11 +33,7 @@ typedef struct stock {
     int     *pipefd;
     int     cmd_nbr;
     int     pipe_nbr;
-    int     fdpipe[2];
-    int     fd1pipe[2];
-    pid_t   pid1;
-    pid_t   pid2;
-    pid_t   pid3;
+    pid_t   pid;
     char	**cmd_argemment;
     char	*paths;
     char	*cmd;
@@ -49,10 +45,8 @@ void	return_error(char *world);
 void	use_this(char *msg);
 void	cmd_not_nound(char *cmd);
 
-// childs
-void	child_own(t_stock bonus, char *argv[], char **envp);
-void	child_tow(t_stock bonus, char *argv[], char **envp);
-void	child_tree(t_stock bonus, char *argv[], char **envp);
+// child
+void	child(t_stock bonus, char *argv[], char **envp);
 
 // small libft
 char	**ft_split(char const *s, char c);
