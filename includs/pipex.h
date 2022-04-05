@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:44:05 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/19 15:00:00 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/05 17:47:10 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	child_tow(t_stock pipex, char *argv[], char **envp);
 //error
 void	use_this(char *msg);
 void	return_error(char *world);
-void	cmd_not_nound(char *cmd);
+void	cmd_not_found(char *cmd);
 
 // small libft
 char	**ft_split(char const *s, char c);

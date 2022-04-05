@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 21:04:25 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/22 18:01:22 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/05 17:48:07 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	child_own(t_stock bonus, char *argv[], char **envp)
 		bonus.cmd = get_cmd(bonus);
 		if (!bonus.cmd)
 		{
-			cmd_not_nound(bonus.cmd_argemment[0]);
+			cmd_not_found(bonus.cmd_argemment[0]);
 			// child_free(bonus.cmd_argemment);
 			exit (EXIT_FAILURE);
 		}
@@ -74,7 +74,7 @@ void	child_tow(t_stock bonus, char *argv[], char **envp)
 		bonus.cmd = get_cmd(bonus);
 		if (!bonus.cmd)
 		{
-			cmd_not_nound(bonus.cmd_argemment[0]);
+			cmd_not_found(bonus.cmd_argemment[0]);
 			// child_free(bonus.cmd_argemment);
 			exit (EXIT_FAILURE);
 		}
@@ -100,7 +100,7 @@ void	child_tree(t_stock bonus, char *argv[], char **envp)
 		bonus.cmd = get_cmd(bonus);
 		if (!bonus.cmd)
 		{
-			cmd_not_nound(bonus.cmd_argemment[0]);
+			cmd_not_found(bonus.cmd_argemment[0]);
 			// child_free(bonus.cmd_argemment);
 			exit (EXIT_FAILURE);
 		}		

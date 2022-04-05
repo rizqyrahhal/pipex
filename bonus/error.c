@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:37:28 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/21 21:33:45 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/05 17:46:50 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	use_this(char *msg)
 	exit (EXIT_FAILURE);
 }
 
-void	cmd_not_nound(char *cmd)
+void	cmd_not_found(char *cmd)
 {
 	write(2, cmd, ft_strlen(cmd));
 	write(2, ": command not found\n", 20);

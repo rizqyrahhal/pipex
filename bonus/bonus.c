@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:29:18 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/29 13:06:00 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/05 22:25:35 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	child(t_stock bonus, char *argv[], char **envp)
 		bonus.cmd = get_cmddd(bonus);
 		if (!bonus.cmd)
 		{
-			cmd_not_nound(bonus.cmd_argemment[0]);
+			cmd_not_found(bonus.cmd_argemment[0]);
 			// child_free(bonus.cmd_argemment);
 			exit (EXIT_FAILURE);
 		}
@@ -113,6 +113,8 @@ int main(int argc, char *argv[], char **envp)
     bonus.cmd_nbr = argc - 3;
     // calcule number of pipes :
     bonus.pipe_nbr = 2 * (bonus.cmd_nbr - 1);
+	// allocate pipefd:
+	bonus.pipefd = (int*)malloc((bonus.pipe_nbr * 2) * sizeof(int));
     // open pipes :
   	creat_pipes(bonus);
  	// find and assigne PATH to bonus.paths

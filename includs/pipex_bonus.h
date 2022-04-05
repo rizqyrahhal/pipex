@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 17:18:27 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/29 11:28:22 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/05 17:47:17 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct stock {
 // errors
 void	return_error(char *world);
 void	use_this(char *msg);
-void	cmd_not_nound(char *cmd);
+void	cmd_not_found(char *cmd);
 
 // childs
 void	child_own(t_stock bonus, char *argv[], char **envp);
