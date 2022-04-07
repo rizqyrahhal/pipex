@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/21 21:04:25 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/05 17:48:07 by rarahhal         ###   ########.fr       */
+/*   Created: 2022/04/06 21:40:29 by rarahhal          #+#    #+#             */
+/*   Updated: 2022/04/06 21:45:10 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includs/pipex_bonus.h"
+#include "../includs/bonus.h"
 
-// get_cmd
-char	*get_cmd(t_stock bonus)
+// childe function :
+char	*get_cmddd(t_stock bonus)
 {
 	char	*tmp;
 	char	*command;
@@ -36,77 +36,34 @@ char	*get_cmd(t_stock bonus)
 	return (0);
 }
 
-// child own
-void	child_own(t_stock bonus, char *argv[], char **envp)
+static void duplicat(int zero, int first)
 {
-	bonus.pid1 = fork();
-	if (bonus.pid1 < 0)
+    dup2(zero, 0);
+    dup2(first, 1);
+}
+
+void	child(t_stock bonus, char *argv[], char **envp)
+{
+	bonus.pid = fork();
+	if (bonus.pid < 0)
 		return_error("error");
-	if (bonus.pid1 == 0)
+	if (bonus.pid == 0)
 	{
-	  bonus.cmd_argemment = ft_split(argv[2], ' ');
-		bonus.cmd = get_cmd(bonus);
+	    bonus.cmd_argemment = ft_split(argv[bonus.indx + 2], ' ');
+		bonus.cmd = get_cmddd(bonus);
 		if (!bonus.cmd)
 		{
 			cmd_not_found(bonus.cmd_argemment[0]);
 			// child_free(bonus.cmd_argemment);
 			exit (EXIT_FAILURE);
 		}
-		close(bonus.fdpipe[0]);
-		dup2(bonus.fdpipe[1], 1);
-		close(bonus.fdpipe[1]);
-		dup2(bonus.infile, 0);
-		close(bonus.infile);
-		if (execve(bonus.cmd, bonus.cmd_argemment, envp) == -1)
-			return_error(bonus.cmd);
-	}
-}
-
-// child tow
-void	child_tow(t_stock bonus, char *argv[], char **envp)
-{
-	bonus.pid2 = fork();
-	if (bonus.pid2 < 0)
-		return_error("error");
-	if (bonus.pid2 == 0)
-	{
-	  bonus.cmd_argemment = ft_split(argv[3], ' ');
-		bonus.cmd = get_cmd(bonus);
-		if (!bonus.cmd)
-		{
-			cmd_not_found(bonus.cmd_argemment[0]);
-			// child_free(bonus.cmd_argemment);
-			exit (EXIT_FAILURE);
-		}
-		close(bonus.fdpipe[1]);
-		close(bonus.fd1pipe[0]);
-		dup2(bonus.fdpipe[0], 0);
-		// dup2(bonus.fd, 1);
-		dup2(bonus.fd1pipe[1], 1);
-		if (execve(bonus.cmd, bonus.cmd_argemment, envp) == -1)
-			return_error(bonus.cmd);
-	}
-}
-
-// child tree
-void	child_tree(t_stock bonus, char *argv[], char **envp)
-{
-	bonus.pid3 = fork();
-	if (bonus.pid3 < 0)
-		return_error("error");
-	if (bonus.pid3 == 0)
-	{
-	  bonus.cmd_argemment = ft_split(argv[4], ' ');
-		bonus.cmd = get_cmd(bonus);
-		if (!bonus.cmd)
-		{
-			cmd_not_found(bonus.cmd_argemment[0]);
-			// child_free(bonus.cmd_argemment);
-			exit (EXIT_FAILURE);
-		}		
-		close(bonus.fd1pipe[1]);
-		dup2(bonus.fd1pipe[0], 0);
-		dup2(bonus.outfile, 1);
+        if (bonus.indx == 0)
+            duplicat(bonus.infile, bonus.pipefd[1]);
+        else if (bonus.indx == bonus.cmd_nbr - 1)
+            duplicat(bonus.pipefd[2 * bonus.indx - 2], bonus.outfile);
+        else
+            duplicat(bonus.pipefd[2 * bonus.indx - 2], bonus.pipefd[2 * bonus.indx + 1]);
+        close_pipes(bonus);
 		if (execve(bonus.cmd, bonus.cmd_argemment, envp) == -1)
 			return_error(bonus.cmd);
 	}

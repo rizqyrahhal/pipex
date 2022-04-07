@@ -9,7 +9,7 @@ SRCS = 	Mandatory/pipex.c \
 
 BONUS_SRCS =	bonus/bonus.c \
 				bonus/error.c \
-				# bonus/child.c \
+				bonus/child.c \
 
 LIBFT = libft/ft_split.c \
 		libft/ft_strjoin.c \

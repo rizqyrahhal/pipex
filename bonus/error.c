@@ -6,11 +6,11 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:37:28 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/05 17:46:50 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/06 21:44:10 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includs/pipex_bonus.h"
+#include "../includs/bonus.h"
 
 void	return_error(char *world)
 {

@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:30:03 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/05 22:17:22 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/06 21:47:09 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	cmd_not_found(char *cmd);
 
 // child
 void	child(t_stock bonus, char *argv[], char **envp);
+
+void    close_pipes(t_stock bonus);
 
 // small libft
 char	**ft_split(char const *s, char c);
