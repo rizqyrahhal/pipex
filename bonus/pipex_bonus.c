@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:06:05 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/10 16:00:25 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/10 17:30:24 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int main(int argc, char *argv[], char **envp)
 	t_stock	bonus;
 	
 	if (argc < chek_hedredoc(argv[1], &bonus))
-		use_this("input format invalide\n");
+		use_this("input format invalid\n");
     // infile
 	get_infile(argv, bonus);
 	// outfile

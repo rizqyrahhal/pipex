@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:17:14 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/10 16:16:36 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/10 17:57:44 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <sys/uio.h>
 # include <unistd.h>
 
-char	*get_next_line(int fd, char* line);
+char	*get_next_line(int fd);
 char	*ft_strjjoin(char const *s1, char const *s2);
 char	*ft_strchr(const char *s, int c);
 

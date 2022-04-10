@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:30:03 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/10 16:19:05 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/10 17:58:00 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct stock {
     char	*paths;
     char	*cmd;
     char	**cmd_paths;
-    char*   line;
 }t_stock;
 
 // errors
@@ -67,7 +66,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 // get_next_line
-char	*get_next_line(int fd, char* line);
+char	*get_next_line(int fd);
 
 
 #endif
