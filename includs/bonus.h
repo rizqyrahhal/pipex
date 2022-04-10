@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:30:03 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/06 21:47:09 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/10 16:19:05 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <sys/wait.h>
 
 typedef struct stock {
+    int     heredoc;
     int     indx;
     int     infile;
     int     outfile;
@@ -38,6 +39,7 @@ typedef struct stock {
     char	*paths;
     char	*cmd;
     char	**cmd_paths;
+    char*   line;
 }t_stock;
 
 // errors
@@ -50,6 +52,13 @@ void	child(t_stock bonus, char *argv[], char **envp);
 
 void    close_pipes(t_stock bonus);
 
+// files
+void    get_infile(char **argv, t_stock bonus);
+void    get_outfile(char *argv, t_stock *bonus);
+
+// here_doc
+void    here_doc(char *argv, t_stock *bonus);
+
 // small libft
 char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *s);
@@ -57,6 +66,8 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
+// get_next_line
+char	*get_next_line(int fd, char* line);
 
 
 #endif
