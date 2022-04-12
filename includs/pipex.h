@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:44:05 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/05 17:47:10 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/12 15:54:39 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,5 @@ size_t	ft_strlen(const char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-
 
 #endif

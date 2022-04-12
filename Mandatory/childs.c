@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 11:19:47 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/03/22 18:03:23 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/12 14:17:09 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	child_own(t_stock pipex, char *argv[], char **envp)
 		pipex.cmd = get_cmd(pipex);
 		if (!pipex.cmd)
 		{
-			cmd_not_nound(pipex.cmd_argemment[0]);
+			cmd_not_found(pipex.cmd_argemment[0]);
 			child_free(pipex.cmd_argemment);
 			exit (EXIT_FAILURE);
 		}
@@ -81,7 +81,7 @@ void	child_tow(t_stock pipex, char *argv[], char **envp)
 		pipex.cmd = get_cmd(pipex);
 		if (!pipex.cmd)
 		{
-			cmd_not_nound(pipex.cmd_argemment[0]);
+			cmd_not_found(pipex.cmd_argemment[0]);
 			child_free(pipex.cmd_argemment);
 			exit (EXIT_FAILURE);
 		}

@@ -6,42 +6,36 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:24:41 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/12 13:47:59 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/12 16:44:22 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includs/bonus.h"
 
-void    here_doc(char *argv, t_stock *bonus)
+void	here_doc(char *argv, t_stock *bonus)
 {
-    int     file;
-    char   *line;
+	int		file;
+	char	*line;
 
-    file = open(".tmp", O_CREAT | O_WRONLY | O_TRUNC, 0000644);
-    if (file < 0)
-        return_error("ERR_HEREDOC");
-    while(1)
-    {
-        write(1, "heredoc>", 9);
-        // printf("|%s|\n%d\n|%s|\n", line, bonus->heredoc, argv);
-        line = get_next_line(0);
-        // if (get_next_line(0, line) < 0)
-        //     exit(1);
-        if (!ft_strncmp(argv, line, ft_strlen(argv) + 1))
-            break;
-        write(file, line, ft_strlen(line));
-        write(file, "\n", 1);
-        free(line);
-    }
-    free(line);
-    close(file);
-    bonus->infile = open(".tmp", O_RDONLY);
-    if (bonus->infile < 0)
-    {
-        unlink(".tmp");
-        return_error("ERR_HEREDOC");
-    }
-    // (void)bonus;
-    // (void)argv;
-    // printf("%s\n%d\n", argv, bonus.heredoc);
+	file = open(".tmp", O_CREAT | O_WRONLY | O_TRUNC, 0000644);
+	if (file < 0)
+		return_error("ERR_HEREDOC");
+	while (1)
+	{
+		write(1, "heredoc>", 9);
+		line = get_next_line(0);
+		if (!ft_strncmp(argv, line, ft_strlen(argv) + 1))
+			break ;
+		write(file, line, ft_strlen(line));
+		write(file, "\n", 1);
+		free(line);
+	}
+	free(line);
+	close(file);
+	bonus->infile = open(".tmp", O_RDONLY);
+	if (bonus->infile < 0)
+	{
+		unlink(".tmp");
+		return_error("ERR_HEREDOC");
+	}
 }

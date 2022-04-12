@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:30:03 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/12 13:40:26 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/12 16:04:38 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@
 # include <sys/wait.h>
 
 typedef struct stock {
-    int     heredoc;
-    int     indx;
-    int     infile;
-    int     outfile;
-    int     *pipefd;
-    int     cmd_nbr;
-    int     pipe_nbr;
-    pid_t   pid;
-    char	**cmd_argemment;
-    char	*paths;
-    char	*cmd;
-    char	**cmd_paths;
+	int		heredoc;
+	int		indx;
+	int		infile;
+	int		outfile;
+	int		*pipefd;
+	int		cmd_nbr;
+	int		pipe_nbr;
+	pid_t	pid;
+	char	**cmd_argemment;
+	char	*paths;
+	char	*cmd;
+	char	**cmd_paths;
 }t_stock;
 
 // errors
@@ -49,14 +49,14 @@ void	cmd_not_found(char *cmd);
 // child
 void	child(t_stock bonus, char *argv[], char **envp);
 
-void    close_pipes(t_stock bonus);
+void	close_pipes(t_stock bonus);
 
 // files
-void    get_infile(char **argv, t_stock bonus);
-void    get_outfile(char *argv, t_stock *bonus);
+void	get_infile(char **argv, t_stock bonus);
+void	get_outfile(char *argv, t_stock *bonus);
 
 // here_doc
-void    here_doc(char *argv, t_stock *bonus);
+void	here_doc(char *argv, t_stock *bonus);
 
 // small libft
 char	**ft_split(char const *s, char c);
@@ -67,6 +67,5 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 // get_next_line
 char	*get_next_line(int fd);
-
 
 #endif
