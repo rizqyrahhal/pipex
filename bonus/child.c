@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:40:29 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/07 17:04:32 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/12 13:49:10 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	child(t_stock bonus, char *argv[], char **envp)
 		return_error("error");
 	if (bonus.pid == 0)
 	{
-	    bonus.cmd_argemment = ft_split(argv[bonus.indx + 2], ' ');
+	    bonus.cmd_argemment = ft_split(argv[bonus.indx + 2 + bonus.heredoc], ' ');
 		bonus.cmd = get_cmddd(bonus);
 		if (!bonus.cmd)
 		{
