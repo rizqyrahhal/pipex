@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:06:05 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/12 16:57:54 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/12 17:53:50 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,11 @@ int	main(int argc, char *argv[], char **envp)
 	bonus.paths = find_path(envp);
 	bonus.indx = -1;
 	while (++bonus.indx < bonus.cmd_nbr)
+	{
 		child(bonus, argv, envp);
+		waitpid(bonus.pid, NULL, 0);
+	}
 	close_pipes(bonus);
-	waitpid(bonus.pid, NULL, 0);
 	close(bonus.infile);
 	close(bonus.outfile);
 	free(bonus.cmd);
