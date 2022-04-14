@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:40:29 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/12 17:54:01 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/14 21:21:59 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	child_free(char **str)
 	free(str);
 }
 
-char	*get_cmddd(t_stock bonus)
+char	*get_cmd(t_stock bonus)
 {
 	char	*tmp;
 	char	*command;
@@ -60,7 +60,7 @@ void	child(t_stock bonus, char *argv[], char **envp)
 	{
 		bonus.cmd_argemment = ft_split(argv[bonus.indx
 				+ 2 + bonus.heredoc], ' ');
-		bonus.cmd = get_cmddd(bonus);
+		bonus.cmd = get_cmd(bonus);
 		if (!bonus.cmd)
 		{
 			cmd_not_found(bonus.cmd_argemment[0]);
@@ -72,8 +72,8 @@ void	child(t_stock bonus, char *argv[], char **envp)
 		else if (bonus.indx == bonus.cmd_nbr - 1)
 			duplicat(bonus.pipefd[2 * bonus.indx - 2], bonus.outfile);
 		else
-			duplicat(bonus.pipefd[2 * bonus.indx
-				- 2], bonus.pipefd[2 * bonus.indx + 1]);
+			duplicat(bonus.pipefd[2 * bonus.indx - 2],
+				bonus.pipefd[2 * bonus.indx + 1]);
 		close_pipes(bonus);
 		if (execve(bonus.cmd, bonus.cmd_argemment, envp) == -1)
 			return_error(bonus.cmd);

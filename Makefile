@@ -12,15 +12,15 @@ BONUS_SRCS =	bonus/pipex_bonus.c \
 				bonus/child.c \
 				bonus/files.c \
 				bonus/here_doc.c \
+				bonus/get_next_line.c \
 
 LIBFT = libft/ft_split.c \
 		libft/ft_strjoin.c \
 		libft/ft_strlen.c \
 		libft/ft_strncmp.c \
 		libft/ft_strnstr.c \
-
-GNL = get_next_line/get_next_line.c \
-		get_next_line/get_next_line_utils.c \
+		libft/ft_calloc.c \
+		libft/ft_strchr.c \
 
 
 $(NAME):
@@ -36,7 +36,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -f outfile
+	@rm -f outfile .temporere infile ; touch infile
 
 re: fclean
 	@make all

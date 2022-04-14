@@ -6,17 +6,17 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 16:40:12 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/12 17:07:20 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/12 22:09:47 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includs/get_next_line.h"
 
 char	*join_and_free(char *save, char *buffer)
 {
 	char	*temp;
 
-	temp = ft_strjjoin(save, buffer);
+	temp = ft_strjoin(save, buffer);
 	free(save);
 	return (temp);
 }
@@ -35,7 +35,7 @@ char	*move_to_rest(char *stock)
 		free(stock);
 		return (NULL);
 	}
-	rest = ft_calloc((ft_strllen(stock) - i + 1), sizeof(char));
+	rest = ft_calloc((ft_strlen(stock) - i + 1), sizeof(char));
 	i++;
 	j = 0;
 	while (stock[i])

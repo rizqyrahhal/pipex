@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 20:17:14 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/12 13:40:21 by rarahhal         ###   ########.fr       */
+/*   Created: 2022/04/12 22:08:38 by rarahhal          #+#    #+#             */
+/*   Updated: 2022/04/12 22:08:41 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 # include <unistd.h>
 
 char	*get_next_line(int fd);
-char	*ft_strjjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strchr(const char *s, int c);
 
 void	ft_bzero(void	*s, size_t	n);
 void	*ft_calloc(size_t count, size_t size);
 
-size_t	ft_strllen(const char *s);
+size_t	ft_strlen(const char *s);
 
 #endif

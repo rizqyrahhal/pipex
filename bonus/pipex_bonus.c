@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:06:05 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/12 17:53:50 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/14 21:17:11 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	main(int argc, char *argv[], char **envp)
 	bonus.cmd_nbr = argc - 3 - bonus.heredoc;
 	bonus.pipe_nbr = 2 * (bonus.cmd_nbr - 1);
 	bonus.pipefd = (int *)malloc(bonus.pipe_nbr * sizeof(int));
+	if (!bonus.pipefd)
+		return_error("error allocation");
 	creat_pipes(bonus);
 	bonus.paths = find_path(envp);
 	bonus.indx = -1;
