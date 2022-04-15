@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 11:19:47 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/12 14:17:09 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/15 17:39:34 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*get_cmd(t_stock pipex)
 			return (command);
 		free(command);
 	}
-	return (0);
+	return (NULL);
 }
 
 void	child_own(t_stock pipex, char *argv[], char **envp)

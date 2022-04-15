@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:40:29 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/15 15:47:33 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/15 17:38:52 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*get_cmd(t_stock bonus)
 			return (command);
 		free(command);
 	}
-	return (0);
+	return (NULL);
 }
 
 static void	duplicat(int zero, int first)
