@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:32:40 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/12 16:39:27 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/15 16:12:04 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,12 @@ void	get_outfile(char *argv, t_stock *bonus)
 		bonus->outfile = open(argv, O_CREAT | O_RDWR | O_TRUNC, 0000644);
 	if (bonus->outfile < 0)
 		return_error("outfile error");
+}
+
+void	close_files(t_stock *bonus)
+{
+	close(bonus->infile);
+	close(bonus->outfile);
+	if (bonus->heredoc)
+		unlink(".temporere");
 }

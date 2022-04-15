@@ -29,14 +29,14 @@ $(NAME):
 all: $(NAME)
 
 bonus:
-	@$(CC) $(FLAGS) $(BONUS_SRCS) $(LIBFT) $(GNL) -o $(NAME)
+	@$(CC) $(FLAGS) $(BONUS_SRCS) $(LIBFT) -o $(NAME)
 
 clean:
 	@rm -f *.o
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -f outfile .temporere infile ; touch infile
+	@rm -f outfile
 
 re: fclean
 	@make all

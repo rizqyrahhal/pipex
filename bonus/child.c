@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:40:29 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/14 21:21:59 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/15 15:47:33 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	child(t_stock bonus, char *argv[], char **envp)
 		else
 			duplicat(bonus.pipefd[2 * bonus.indx - 2],
 				bonus.pipefd[2 * bonus.indx + 1]);
-		close_pipes(bonus);
+		close_pipes(&bonus);
 		if (execve(bonus.cmd, bonus.cmd_argemment, envp) == -1)
 			return_error(bonus.cmd);
 	}
