@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:24:41 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/16 17:44:53 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/16 21:08:16 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	here_doc(char *argv, t_stock *bonus)
 	int		file;
 	char	*line;
 
-	file = open(".temporere", O_CREAT | O_WRONLY | O_TRUNC, 0000644);
+	file = open("/tmp/.temporere", O_CREAT | O_WRONLY | O_TRUNC, 0000644);
 	if (file < 0)
 		return_error("ERR_HEREDOC");
 	while (1)
@@ -48,10 +48,10 @@ void	here_doc(char *argv, t_stock *bonus)
 	}
 	free(line);
 	close(file);
-	bonus->infile = open(".temporere", O_RDONLY);
+	bonus->infile = open("/tmp/.temporere", O_RDONLY);
 	if (bonus->infile < 0)
 	{
-		unlink(".temporere");
+		unlink("/tmp/.temporere");
 		return_error("ERR_heredoc_infile");
 	}
 }

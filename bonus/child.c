@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:40:29 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/16 17:57:03 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/16 21:31:33 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,23 @@ void	child_free(char **str)
 	free(str);
 }
 
-char	*get_cmd(t_stock bonus)
+char	*get_cmd(t_stock *bonus)
 {
 	char	*tmp;
 	char	*command;
 	int		i;
 
-	if (ft_strnstr(bonus.cmd_argemment[0], "/",
-			ft_strlen(bonus.cmd_argemment[0])))
-		return (bonus.cmd_argemment[0]);
+	if (ft_strnstr(bonus->cmd_argemment[0], "/",
+			ft_strlen(bonus->cmd_argemment[0])))
+		return (bonus->cmd_argemment[0]);
 	i = -1;
-	bonus.cmd_paths = ft_split(bonus.paths, ':');
-	while (bonus.cmd_paths[++i])
+	bonus->cmd_paths = ft_split(bonus->paths, ':');
+	while (bonus->cmd_paths[++i])
 	{
-		tmp = ft_strjoin("/", bonus.cmd_argemment[0]);
-		command = ft_strjoin(bonus.cmd_paths[i], tmp);
+		tmp = ft_strjoin("/", bonus->cmd_argemment[0]);
+		command = ft_strjoin(bonus->cmd_paths[i], tmp);
 		free(tmp);
+		// printf("%s\n", command);
 		if (access(command, F_OK) == 0)
 			return (command);
 		free(command);
@@ -51,31 +52,32 @@ static void	duplicat(int zero, int first)
 	dup2(first, 1);
 }
 
-void	child(t_stock *bonus, char *argv[], char **envp)
-{
-	bonus->pid = fork();
-	if (bonus->pid < 0)
+void	child(t_stock bonus, char *argv[], char **envp)
+{\
+	bonus.pid = fork();
+	if (bonus.pid < 0)
 		return_error("error");
-	if (bonus->pid == 0)
+	if (bonus.pid == 0)
 	{
-		bonus->cmd_argemment = ft_split(argv[bonus->indx
-				+ 2 + bonus->heredoc], ' ');
-		bonus->cmd = get_cmd(*bonus);
-		if (!bonus->cmd)
+		bonus.cmd_argemment = ft_split(argv[bonus.indx
+				+ 2 + bonus.heredoc], ' ');
+		bonus.cmd = get_cmd(&bonus);
+		// printf("%s\n", bonus.cmd);
+		if (!bonus.cmd)
 		{
-			cmd_not_found(bonus->cmd_argemment[0]);
-			child_free(bonus->cmd_argemment);
+			cmd_not_found(bonus.cmd_argemment[0]);
+			child_free(bonus.cmd_argemment);
 			exit (EXIT_FAILURE);
 		}
-		if (bonus->indx == 0)
-			duplicat(bonus->infile, bonus->pipefd[1]);
-		else if (bonus->indx == bonus->cmd_nbr - 1)
-			duplicat(bonus->pipefd[2 * bonus->indx - 2], bonus->outfile);
+		if (bonus.indx == 0)
+			duplicat(bonus.infile, bonus.pipefd[1]);
+		else if (bonus.indx == bonus.cmd_nbr - 1)
+			duplicat(bonus.pipefd[2 * bonus.indx - 2], bonus.outfile);
 		else
-			duplicat(bonus->pipefd[2 * bonus->indx - 2],
-				bonus->pipefd[2 * bonus->indx + 1]);
-		close_pipes(bonus);
-		if (execve(bonus->cmd, bonus->cmd_argemment, envp) == -1)
-			return_error(bonus->cmd);
+			duplicat(bonus.pipefd[2 * bonus.indx - 2],
+				bonus.pipefd[2 * bonus.indx + 1]);
+		close_pipes(&bonus);
+		if (execve(bonus.cmd, bonus.cmd_argemment, envp) == -1)
+			return_error(bonus.cmd);
 	}
 }

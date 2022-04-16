@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:32:40 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/16 17:47:57 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/16 21:20:16 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	get_infile(char **argv, t_stock *bonus)
 	{
 		bonus->infile = open(argv[1], O_RDONLY);
 		if (bonus->infile < 0)
-			return_error("infile error");
+			infile_error(argv[1]);
 	}
 }
 
