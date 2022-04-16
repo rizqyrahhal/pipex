@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:30:03 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/15 16:12:16 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/16 17:57:19 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ void	use_this(char *msg);
 void	cmd_not_found(char *cmd);
 
 // child
-void	child(t_stock bonus, char *argv[], char **envp);
+void	child(t_stock *bonus, char *argv[], char **envp);
 void	close_pipes(t_stock *bonus);
 
 // files
-void	get_infile(char **argv, t_stock bonus);
+void	get_infile(char **argv, t_stock *bonus);
 void	get_outfile(char *argv, t_stock *bonus);
 void	close_files(t_stock *bonus);
 

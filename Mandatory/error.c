@@ -6,11 +6,16 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:47:31 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/12 14:26:28 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/16 17:16:53 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includs/pipex.h"
+
+void	infile_error(char *world)
+{
+	perror(world);
+}
 
 void	return_error(char *world)
 {

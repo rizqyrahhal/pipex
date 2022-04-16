@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:24:41 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/15 15:50:24 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/16 17:44:53 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	here_doc(char *argv, t_stock *bonus)
 	{
 		write(1, "heredoc> ", 10);
 		line = get_next_line(0);
+		if (!line)
+			break;
 		if (!ft_strncmp(argv, line, ft_strlen(argv) + 1))
 			break ;
 		write(file, line, ft_strlen(line));
