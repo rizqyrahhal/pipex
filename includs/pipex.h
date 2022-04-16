@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:44:05 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/16 17:31:24 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/16 23:16:34 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ typedef struct s_stock {
 }	t_stock;
 
 // childs
-void	child_own(t_stock *pipex, char *argv[], char **envp);
-void	child_tow(t_stock *pipex, char *argv[], char **envp);
+void	child_own(t_stock pipex, char *argv[], char **envp);
+void	child_tow(t_stock pipex, char *argv[], char **envp);
 
 //error
 void	infile_error(char *world);

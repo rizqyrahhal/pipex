@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:40:29 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/16 21:31:33 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/16 23:09:09 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ char	*get_cmd(t_stock *bonus)
 		tmp = ft_strjoin("/", bonus->cmd_argemment[0]);
 		command = ft_strjoin(bonus->cmd_paths[i], tmp);
 		free(tmp);
-		// printf("%s\n", command);
 		if (access(command, F_OK) == 0)
 			return (command);
 		free(command);
@@ -53,7 +52,7 @@ static void	duplicat(int zero, int first)
 }
 
 void	child(t_stock bonus, char *argv[], char **envp)
-{\
+{
 	bonus.pid = fork();
 	if (bonus.pid < 0)
 		return_error("error");
@@ -62,7 +61,6 @@ void	child(t_stock bonus, char *argv[], char **envp)
 		bonus.cmd_argemment = ft_split(argv[bonus.indx
 				+ 2 + bonus.heredoc], ' ');
 		bonus.cmd = get_cmd(&bonus);
-		// printf("%s\n", bonus.cmd);
 		if (!bonus.cmd)
 		{
 			cmd_not_found(bonus.cmd_argemment[0]);
