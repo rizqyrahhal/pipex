@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 11:19:47 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/17 15:28:54 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/17 18:02:35 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ char	*get_cmd(t_stock *pipex)
 
 void	child_own(t_stock *pipex, char *argv[], char **envp)
 {
+	// pipex->infile = open(argv[1], O_RDONLY);
+	// if (pipex->infile < 0)
+	// 	return_error(argv[1]);
 	pipex->pid1 = fork();
 	if (pipex->pid1 < 0)
 		return_error("error");
