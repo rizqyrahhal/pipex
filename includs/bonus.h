@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:30:03 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/17 16:55:56 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/18 02:02:53 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct stock {
 	int		pipe_nbr;
 	pid_t	pid;
 	char	**cmd_argemment;
-	char	*paths;
+	char	*env_path;
 	char	*cmd;
 	char	**cmd_paths;
 }t_stock;
@@ -48,7 +48,7 @@ void	use_this(char *msg);
 void	cmd_not_found(char *cmd);
 
 // child
-void	child(t_stock bonus, char *argv[], char **envp);
+void	child(t_stock *bonus, char *argv[], char **envp);
 void	close_pipes(t_stock *bonus);
 
 // files

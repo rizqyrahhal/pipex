@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:42:14 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/17 18:02:39 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/17 20:56:19 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int	main(int argc, char *argv[], char **envp)
 	if (pipe(pipex.pipefd) == -1)
 		return_error("error in opining pipe");
 	pipex.paths = find_path(envp);
-	child_own(&pipex, argv, envp);
+	if (!pipex.infile)
+		child_own(&pipex, argv, envp);
 	child_tow(&pipex, argv, envp);
 	close_pipes(&pipex);
 	waitpid(pipex.pid1, NULL, 0);

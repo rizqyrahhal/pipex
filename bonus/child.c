@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:40:29 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/17 16:55:49 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/18 02:27:09 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ char	*get_cmd(t_stock *bonus)
 	if (ft_strnstr(bonus->cmd_argemment[0], "/",
 			ft_strlen(bonus->cmd_argemment[0])))
 		return (bonus->cmd_argemment[0]);
-	i = -1;
-	bonus->cmd_paths = ft_split(bonus->paths, ':');
-	while (bonus->cmd_paths[++i])
+	i = 0;
+	bonus->cmd_paths = ft_split(bonus->env_path, ':');
+	while(*bonus->cmd_paths)
 	{
 		tmp = ft_strjoin("/", bonus->cmd_argemment[0]);
 		command = ft_strjoin(bonus->cmd_paths[i], tmp);
@@ -41,6 +41,8 @@ char	*get_cmd(t_stock *bonus)
 		if (access(command, F_OK) == 0)
 			return (command);
 		free(command);
+		bonus->cmd_paths++;
+		i++;
 	}
 	return (NULL);
 }
@@ -51,31 +53,31 @@ static void	duplicat(int zero, int first)
 	dup2(first, 1);
 }
 
-void	child(t_stock bonus, char *argv[], char **envp)
+void	child(t_stock *bonus, char *argv[], char **envp)
 {
-	bonus.pid = fork();
-	if (bonus.pid < 0)
+	bonus->pid = fork();
+	if (bonus->pid < 0)
 		return_error("error");
-	if (bonus.pid == 0)
+	if (bonus->pid == 0)
 	{
-		bonus.cmd_argemment = ft_split(argv[bonus.indx
-				+ 2 + bonus.heredoc], ' ');
-		bonus.cmd = get_cmd(&bonus);
-		if (!bonus.cmd)
+		bonus->cmd_argemment = ft_split(argv[bonus->indx
+				+ 2 + bonus->heredoc], ' ');
+		bonus->cmd = get_cmd(bonus);
+		if (!bonus->cmd)
 		{
-			cmd_not_found(bonus.cmd_argemment[0]);
-			child_free(bonus.cmd_argemment);
+			cmd_not_found(bonus->cmd_argemment[0]);
+			child_free(bonus->cmd_argemment);
 			exit (EXIT_FAILURE);
 		}
-		if (bonus.indx == 0)
-			duplicat(bonus.infile, bonus.pipefd[1]);
-		else if (bonus.indx == bonus.cmd_nbr - 1)
-			duplicat(bonus.pipefd[2 * bonus.indx - 2], bonus.outfile);
+		if (bonus->indx == 0)
+			duplicat(bonus->infile, bonus->pipefd[1]);
+		else if (bonus->indx == bonus->cmd_nbr - 1)
+			duplicat(bonus->pipefd[2 * bonus->indx - 2], bonus->outfile);
 		else
-			duplicat(bonus.pipefd[2 * bonus.indx - 2],
-				bonus.pipefd[2 * bonus.indx + 1]);
-		close_pipes(&bonus);
-		if (execve(bonus.cmd, bonus.cmd_argemment, envp) == -1)
-			return_error(bonus.cmd);
+			duplicat(bonus->pipefd[2 * bonus->indx - 2],
+				bonus->pipefd[2 * bonus->indx + 1]);
+		close_pipes(bonus);
+		if (execve(bonus->cmd, bonus->cmd_argemment, envp) == -1)
+			return_error(bonus->cmd);
 	}
 }
