@@ -6,13 +6,13 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 11:19:47 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/18 22:40:57 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/19 22:04:49 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includs/pipex.h"
 
-void	child_free(char **str)
+void	child_free(char **str, char *cmd)
 {
 	int	i;
 
@@ -20,6 +20,7 @@ void	child_free(char **str)
 	while (str[i])
 		free(str[i++]);
 	free(str);
+	free(cmd);
 }
 
 char	*get_cmd(t_stock pipex)
@@ -56,7 +57,7 @@ void	child_own(t_stock pipex, char *argv[], char **envp)
 		if (!pipex.cmd)
 		{
 			cmd_not_found(pipex.cmd_argemment[0]);
-			child_free(pipex.cmd_argemment);
+			child_free(pipex.cmd_argemment, pipex.cmd);
 			exit (EXIT_FAILURE);
 		}
 		close(pipex.pipefd[0]);
@@ -81,7 +82,7 @@ void	child_tow(t_stock pipex, char *argv[], char **envp)
 		if (!pipex.cmd)
 		{
 			cmd_not_found(pipex.cmd_argemment[0]);
-			child_free(pipex.cmd_argemment);
+			child_free(pipex.cmd_argemment, pipex.cmd);
 			exit (EXIT_FAILURE);
 		}
 		close(pipex.pipefd[1]);

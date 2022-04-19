@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:30:03 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/18 22:58:47 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/19 22:09:12 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct stock {
 	int		pipe_nbr;
 	pid_t	pid;
 	char	**cmd_argemment;
-	char	*paths;
+	char	*env_path;
 	char	*cmd;
 	char	**cmd_paths;
 }t_stock;

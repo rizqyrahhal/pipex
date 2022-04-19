@@ -6,11 +6,21 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:42:14 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/19 21:25:38 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/19 22:08:17 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includs/pipex.h"
+
+void	parent_free(t_stock *pipex)
+{
+	int	i;
+
+	i = -1;
+	while (pipex->cmd_paths[++i])
+		free(pipex->cmd_paths[i]);
+	free(pipex->cmd_paths);
+}
 
 void	close_pipes(t_stock *pipex)
 {
@@ -33,7 +43,7 @@ int	main(int argc, char *argv[], char **envp)
 		use_this("executed as follows: ./pipex file1 cmd1 cmd2 file2\n");
 	pipex.infile = open(argv[1], O_RDONLY);
 	if (pipex.infile < 0)
-		infile_error("infile error");
+		return_error("infile error");
 	pipex.outfile = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (pipex.outfile < 0)
 		return_error("infile error");
@@ -48,6 +58,6 @@ int	main(int argc, char *argv[], char **envp)
 	waitpid(-1, NULL, 0);
 	close(pipex.infile);
 	close(pipex.outfile);
-	free(pipex.cmd);
+	parent_free(&pipex);
 	return (0);
 }
