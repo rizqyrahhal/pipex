@@ -6,13 +6,13 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:40:29 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/19 20:53:58 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/19 21:16:45 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includs/bonus.h"
 
-void	child_free(char **str)
+void	child_free(char **str, char *cmd)
 {
 	int	i;
 
@@ -20,6 +20,7 @@ void	child_free(char **str)
 	while (str[i])
 		free(str[i++]);
 	free(str);
+	free(cmd);
 }
 
 char	*get_cmd(t_stock bonus)
@@ -63,7 +64,7 @@ void	child(t_stock bonus, char *argv[], char **envp)
 		if (!bonus.cmd)
 		{
 			cmd_not_found(bonus.cmd_argemment[0]);
-			child_free(bonus.cmd_argemment);
+			child_free(bonus.cmd_argemment, bonus.cmd);
 			exit (EXIT_FAILURE);
 		}
 		if (bonus.indx == 0)
