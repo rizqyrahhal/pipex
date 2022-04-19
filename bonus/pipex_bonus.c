@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:06:05 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/19 01:21:43 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:56:28 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ int	main(int argc, char *argv[], char **envp)
 		waitpid(-1, NULL, 0);
 	close_pipes(&bonus);
 	close_files(&bonus);
-	free(bonus.cmd);
+	// free(bonus.cmd);
 	return (0);
 }
