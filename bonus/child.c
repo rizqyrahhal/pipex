@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:40:29 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/19 21:16:45 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/19 23:09:20 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,20 @@ static void	duplicat(int zero, int first)
 	dup2(first, 1);
 }
 
+void	help_child(t_stock *bonus, char *argv[])
+{
+	if (bonus->indx == 0)
+	{
+		get_infile(argv, bonus);
+		duplicat(bonus->infile, bonus->pipefd[1]);
+	}
+	else if (bonus->indx == bonus->cmd_nbr - 1)
+		duplicat(bonus->pipefd[2 * bonus->indx - 2], bonus->outfile);
+	else
+		duplicat(bonus->pipefd[2 * bonus->indx - 2],
+			bonus->pipefd[2 * bonus->indx + 1]);
+}
+
 void	child(t_stock bonus, char *argv[], char **envp)
 {
 	bonus.pid = fork();
@@ -67,13 +81,7 @@ void	child(t_stock bonus, char *argv[], char **envp)
 			child_free(bonus.cmd_argemment, bonus.cmd);
 			exit (EXIT_FAILURE);
 		}
-		if (bonus.indx == 0)
-			duplicat(bonus.infile, bonus.pipefd[1]);
-		else if (bonus.indx == bonus.cmd_nbr - 1)
-			duplicat(bonus.pipefd[2 * bonus.indx - 2], bonus.outfile);
-		else
-			duplicat(bonus.pipefd[2 * bonus.indx - 2],
-				bonus.pipefd[2 * bonus.indx + 1]);
+		help_child(&bonus, argv);
 		close_pipes(&bonus);
 		if (execve(bonus.cmd, bonus.cmd_argemment, envp) == -1)
 			return_error(bonus.cmd);

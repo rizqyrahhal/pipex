@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 11:19:47 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/19 22:04:49 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/19 22:55:41 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ void	child_own(t_stock pipex, char *argv[], char **envp)
 		return_error("error");
 	if (pipex.pid1 == 0)
 	{
+		pipex.infile = open(argv[1], O_RDONLY);
+		if (pipex.infile < 0)
+			return_error(argv[1]);
 		pipex.cmd_argemment = ft_split(argv[2], ' ');
 		pipex.cmd = get_cmd(pipex);
 		if (!pipex.cmd)

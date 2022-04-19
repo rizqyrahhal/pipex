@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:06:05 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/19 22:09:03 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/19 22:59:14 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	main(int argc, char *argv[], char **envp)
 
 	if (argc < chek_hedredoc(argv[1], &bonus))
 		use_this("Input Format Invalid\n");
-	get_infile(argv, &bonus);
 	get_outfile(argv[argc - 1], &bonus);
 	bonus.cmd_nbr = argc - 3 - bonus.heredoc;
 	bonus.pipe_nbr = 2 * (bonus.cmd_nbr - 1);
