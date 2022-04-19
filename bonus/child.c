@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 21:40:29 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/15 17:38:52 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/19 01:21:37 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ char	*get_cmd(t_stock bonus)
 			ft_strlen(bonus.cmd_argemment[0])))
 		return (bonus.cmd_argemment[0]);
 	i = -1;
-	bonus.cmd_paths = ft_split(bonus.paths, ':');
 	while (bonus.cmd_paths[++i])
 	{
 		tmp = ft_strjoin("/", bonus.cmd_argemment[0]);

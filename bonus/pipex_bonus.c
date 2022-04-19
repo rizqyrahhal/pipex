@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:06:05 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/19 01:09:23 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/19 01:21:43 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	main(int argc, char *argv[], char **envp)
 		return_error("error allocation");
 	creat_pipes(&bonus);
 	bonus.paths = find_path(envp);
+	bonus.cmd_paths = ft_split(bonus.paths, ':');
 	bonus.indx = -1;
 	while (++bonus.indx < bonus.cmd_nbr)
 	{
@@ -60,8 +61,7 @@ int	main(int argc, char *argv[], char **envp)
 		// waitpid(bonus.pid, NULL, 0);
 	}
 	while (bonus.indx-- > 0)
-		wait(NULL);
-		// waitpid(-1, NULL, 0);
+		waitpid(-1, NULL, 0);
 	close_pipes(&bonus);
 	close_files(&bonus);
 	free(bonus.cmd);
