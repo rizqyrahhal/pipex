@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:42:14 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/17 20:56:19 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/18 22:41:24 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ int	main(int argc, char *argv[], char **envp)
 		use_this("executed as follows: ./pipex file1 cmd1 cmd2 file2\n");
 	pipex.infile = open(argv[1], O_RDONLY);
 	if (pipex.infile < 0)
-		infile_error(argv[1]);
-	pipex.outfile = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0644);
+		infile_error("infile error");
+	pipex.outfile = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0000644);
 	if (pipex.outfile < 0)
 		return_error("infile error");
 	if (pipe(pipex.pipefd) == -1)
 		return_error("error in opining pipe");
-	pipex.paths = find_path(envp);
-	if (!pipex.infile)
-		child_own(&pipex, argv, envp);
-	child_tow(&pipex, argv, envp);
+	pipex.env_path = find_path(envp);
+	pipex.cmd_paths = ft_split(pipex.env_path, ':');
+	child_own(pipex, argv, envp);
+	child_tow(pipex, argv, envp);
 	close_pipes(&pipex);
-	waitpid(pipex.pid1, NULL, 0);
-	waitpid(pipex.pid2, NULL, 0);
+	waitpid(-1, NULL, 0);
+	waitpid(-1, NULL, 0);
 	close(pipex.infile);
 	close(pipex.outfile);
 	free(pipex.cmd);

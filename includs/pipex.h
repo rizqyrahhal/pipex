@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:44:05 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/17 15:11:12 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/18 22:41:32 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,18 @@ typedef struct s_stock {
 	pid_t	pid1;
 	pid_t	pid2;
 	char	**cmd_argemment;
-	char	*paths;
+	char	*env_path;
 	char	*cmd;
 	char	**cmd_paths;
 }	t_stock;
 
 // childs
-void	child_own(t_stock *pipex, char *argv[], char **envp);
-void	child_tow(t_stock *pipex, char *argv[], char **envp);
+void	child_own(t_stock pipex, char *argv[], char **envp);
+void	child_tow(t_stock pipex, char *argv[], char **envp);
 
 //error
-void	infile_error(char *world);
 void	use_this(char *msg);
+void	infile_error(char *world);
 void	return_error(char *world);
 void	cmd_not_found(char *cmd);
 
