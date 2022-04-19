@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 14:32:40 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/19 01:06:48 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/19 21:25:52 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	get_infile(char **argv, t_stock *bonus)
 void	get_outfile(char *argv, t_stock *bonus)
 {
 	if (bonus->heredoc)
-		bonus->outfile = open(argv, O_CREAT | O_RDWR | O_APPEND, 0000644);
+		bonus->outfile = open(argv, O_CREAT | O_RDWR | O_APPEND, 0644);
 	else
-		bonus->outfile = open(argv, O_CREAT | O_RDWR | O_TRUNC, 0000644);
+		bonus->outfile = open(argv, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (bonus->outfile < 0)
 		return_error("outfile error");
 }

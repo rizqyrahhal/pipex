@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:06:05 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/19 21:14:05 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/19 21:22:44 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ int	main(int argc, char *argv[], char **envp)
 	while (bonus.indx-- > 0)
 		waitpid(-1, NULL, 0);
 	close_files(&bonus);
+	free(bonus.pipefd);
 	return (0);
 }
