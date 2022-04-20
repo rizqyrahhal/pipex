@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 16:42:14 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/19 22:58:51 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/20 18:19:10 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,15 @@ void	close_pipes(t_stock *pipex)
 
 char	*find_path(char **envp)
 {
-	while (ft_strncmp("PATH", *envp, 4) != 0)
+	int	i;
+
+	i = -1;
+	while (ft_strncmp("PATH", *envp, 4) != 0 && envp[++i])
 		envp++;
-	return (*envp + 5);
+	if (ft_strnstr(*envp, "PATH", 4))
+		return (*envp + 5);
+	else
+		return ("PATH NOT EXISTE..");
 }
 
 int	main(int argc, char *argv[], char **envp)

@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:06:05 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/19 22:59:14 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/20 18:22:45 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,15 @@ void	parent_free(t_stock *bonus)
 
 char	*find_path(char **envp)
 {
-	while (ft_strncmp("PATH", *envp, 4) != 0)
+	int	i;
+
+	i = -1;
+	while (ft_strncmp("PATH", *envp, 4) != 0 && envp[++i])
 		envp++;
-	return (*envp + 5);
+	if (ft_strnstr(*envp, "PATH", 4))
+		return (*envp + 5);
+	else
+		return ("PATH NOT EXISTE..");
 }
 
 void	creat_pipes(t_stock *bonus)
