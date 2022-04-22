@@ -6,7 +6,7 @@
 #    By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/21 17:40:58 by rarahhal          #+#    #+#              #
-#    Updated: 2022/04/22 15:39:14 by rarahhal         ###   ########.fr        #
+#    Updated: 2022/04/22 15:45:35 by rarahhal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,9 @@ bonus: $(OBJS_B) $(OBJS_L)
 	@$(CC) $(FLAGS) $(OBJS_B) $(OBJS_L) -o $(NAME)
 
 clean:
-	@rm -f *.o
+	@rm -f bonus/*.o
+	@rm -f libft/*.o
+	@rm -f Mandatory/*.o
 
 fclean: clean
 	@rm -f $(NAME)
