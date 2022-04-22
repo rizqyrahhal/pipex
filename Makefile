@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/04/21 17:40:58 by rarahhal          #+#    #+#              #
+#    Updated: 2022/04/22 15:39:14 by rarahhal         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = pipex
 FLAGS = -Wall -Werror -Wextra
 CC = cc
@@ -22,14 +34,17 @@ LIBFT = libft/ft_split.c \
 		libft/ft_calloc.c \
 		libft/ft_strchr.c \
 
+OBJS = $(SRCS:.c=.o)
+OBJS_L = $(LIBFT:.c=.o)
+OBJS_B = $(BONUS_SRCS:.c=.o)
 
-$(NAME):
-	@$(CC) $(FLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+$(NAME): $(OBJS) $(OBJS_L)
+	@$(CC) $(FLAGS) $(OBJS) $(OBJS_L) -o $(NAME)
 
 all: $(NAME)
 
-bonus:
-	@$(CC) $(FLAGS) $(BONUS_SRCS) $(LIBFT) -o $(NAME)
+bonus: $(OBJS_B) $(OBJS_L)
+	@$(CC) $(FLAGS) $(OBJS_B) $(OBJS_L) -o $(NAME)
 
 clean:
 	@rm -f *.o
