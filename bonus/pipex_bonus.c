@@ -6,7 +6,7 @@
 /*   By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 16:06:05 by rarahhal          #+#    #+#             */
-/*   Updated: 2022/04/20 18:22:45 by rarahhal         ###   ########.fr       */
+/*   Updated: 2022/04/22 17:27:36 by rarahhal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	close_pipes(t_stock *bonus)
 int	main(int argc, char *argv[], char **envp)
 {
 	t_stock	bonus;
-
+ 
 	if (argc < chek_hedredoc(argv[1], &bonus))
 		use_this("Input Format Invalid\n");
 	get_outfile(argv[argc - 1], &bonus);

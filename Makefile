@@ -6,7 +6,7 @@
 #    By: rarahhal <rarahhal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/21 17:40:58 by rarahhal          #+#    #+#              #
-#    Updated: 2022/04/22 15:45:35 by rarahhal         ###   ########.fr        #
+#    Updated: 2022/04/23 13:07:40 by rarahhal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,12 +39,12 @@ OBJS_L = $(LIBFT:.c=.o)
 OBJS_B = $(BONUS_SRCS:.c=.o)
 
 $(NAME): $(OBJS) $(OBJS_L)
-	@$(CC) $(FLAGS) $(OBJS) $(OBJS_L) -o $(NAME)
+	$(CC) $(FLAGS) $(OBJS) $(OBJS_L) -o $(NAME)
 
 all: $(NAME)
 
 bonus: $(OBJS_B) $(OBJS_L)
-	@$(CC) $(FLAGS) $(OBJS_B) $(OBJS_L) -o $(NAME)
+	$(CC) $(FLAGS) $(OBJS_B) $(OBJS_L) -o $(NAME)
 
 clean:
 	@rm -f bonus/*.o
